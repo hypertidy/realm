@@ -4,7 +4,7 @@
 #' @export
 #' @importFrom tibble tibble
 #' @examples
-#' # realm_test_files()
+#'  realm_test_files()
 #'
 realm_test_files <- function() {
   dp <- system.file("extdata", "ice_realm", "partitioning.64", package = "realm")
@@ -41,8 +41,8 @@ read_elements <- function(x) {
   dplyr::bind_rows(lapply(x$fullname, read_elements_file))
 }
 read_elements_file <- function(x) {
-  readr::read_table2(x, col_names = FALSE) %>%
-    rename(v0 = X4, v1 = X5, v2 = X6) %>%
+  readr::read_table(x, col_names = FALSE) %>%
+    #rename(v0 = X4, v1 = X5, v2 = X6) %>%
     dplyr::mutate(filename = basename(x))
 }
 read_boundaries <- function(x) {
